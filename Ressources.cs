@@ -24,7 +24,7 @@ namespace myRessources
 
         public void usedWood(int nbr)
         {
-            if (nbr >= _woods)
+            if (nbr <= _woods)
             {
                 _woods -= nbr;
             }
@@ -36,7 +36,7 @@ namespace myRessources
 
         public void usedStone(int nbr)
         {
-            if (nbr >= _stones)
+            if (nbr <= _stones)
             {
                 _stones -= nbr;
             }
@@ -44,6 +44,11 @@ namespace myRessources
             {
                 Console.WriteLine("Pas assez de pierre pour cette opération!");
             }
+        }
+
+        public void addStone(int nbr)
+        {
+            _stones += nbr;
         }
 
 

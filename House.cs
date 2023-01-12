@@ -3,9 +3,9 @@ namespace myHouse
 
     public class House
     {
-        static int wood_needed;
-        static int stone_needed;
-        static int villageois;
+        public static int wood_needed;
+        public static int stone_needed;
+        public static int villageois;
 
         public House()
         {

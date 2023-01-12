@@ -7,13 +7,13 @@ void main()
 {
 
     // Exercice 2: tests (ATTENTION: repasser AddHouse en public pour que ça refonctionne)
-    // Village myVillage = new Village("Victor le createur");
-    // myVillage.GetName(); // affichera Victor le createur
-    // Console.WriteLine(myVillage.listHouse.Count); // affichera 1
-    // myVillage.AddHouse();
-    // myVillage.AddHouse();
-    // Console.WriteLine(myVillage.listHouse.Count); // affichera 3
-    // Console.WriteLine(myVillage.villageois); // affichera 30
+    Village myVillage = new Village("Victor le createur");
+    myVillage.getName(); // affichera Victor le createur
+    Console.WriteLine(myVillage.listHouse.Length); // affichera 1
+    myVillage.addHouse();
+    myVillage.addHouse();
+    Console.WriteLine(myVillage.listHouse.Length); // affichera 3
+    Console.WriteLine(myVillage.villageois); // affichera 30
 
 }
 
@@ -22,38 +22,48 @@ public class Village
     private string _name;
     private Ressources _myRessources;
     public House chefHome;
-    public int villageois = 0;
-    public List<House> listHouse;
+    public int villageois
+    {
+        get
+        {
+            return House.villageois * listHouse.Length; ;
+        }
+    }
+    public House[] listHouse;
 
     public Village(string c_name)
     {
         _name = c_name;
         _myRessources = new Ressources();
-        listHouse = new List<House> { chefHome };
-        villageois = 10 * listHouse.Count;
-
+        listHouse = new House[1] { chefHome };
     }
 
-    public void GetName()
+    public void getName()
     {
         Console.WriteLine($"Nom du village: {_name}");
     }
 
-    public int GetWood()
+    public int getWood()
     {
         return _myRessources.getWood();
     }
 
-    public int GetStone()
+    public int getStone()
     {
         return _myRessources.getStone();
     }
 
-    private void AddHouse()
+    public void addHouse()
     {
+        House[] newListHouse = new House[listHouse.Length + 1];
         House houseToAdd = new House();
-        listHouse.Add(houseToAdd);
-        villageois = 10 * listHouse.Count;
+
+        for (int i = 0; i < listHouse.Length; i++)
+        {
+            newListHouse[i] = listHouse[i];
+        }
+        newListHouse[newListHouse.Length - 1] = houseToAdd;
+        listHouse = newListHouse;
     }
 
 

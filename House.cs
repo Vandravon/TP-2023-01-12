@@ -1,4 +1,4 @@
-namespace myHouse
+namespace myGameDependencies
 {
 
     public class House

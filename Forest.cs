@@ -15,7 +15,7 @@ namespace myGameDependencies
 
         public int cutWood(int nombreVillageois)
         {
-            return nombreVillageois * gain_wood + 10 * _level;
+            return nombreVillageois * gain_wood;
         }
 
         public void getLevel()
@@ -26,7 +26,9 @@ namespace myGameDependencies
         public void upgrade()
         {
             _level++;
+            gain_wood = 10 * _level;
         }
+
 
     }
 }

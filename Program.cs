@@ -27,21 +27,26 @@ void main()
     Console.WriteLine(myVillage.getWood()); // affiche 187
     Console.WriteLine(myVillage.getStone()); // affiche 10
 
-    myVillage.ressourcesLevelPlus();
+    // myVillage.upgradeRessources();
 
     myVillage.ressourcesPlus(300);
 
-
-
-    Console.WriteLine(myVillage.getWood()); // affiche 187
-    Console.WriteLine(myVillage.getStone()); // affiche 10
-
-    myVillage.ressourcesLevelPlus();
-
-    myVillage.ressourcesPlus(800);
+    myVillage.upgradeForest();
+    myVillage.upgradeForest();
+    myVillage.upgradeMine();
+    myVillage.upgradeMine();
 
     Console.WriteLine(myVillage.getWood()); // affiche 187
     Console.WriteLine(myVillage.getStone()); // affiche 10
+
+
+
+    // myVillage.upgradeRessources();
+
+    // myVillage.ressourcesPlus(800);
+
+    // Console.WriteLine(myVillage.getWood()); // affiche 187
+    // Console.WriteLine(myVillage.getStone()); // affiche 10
 
 
 }

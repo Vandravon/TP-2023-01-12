@@ -27,6 +27,7 @@ namespace myGameDependencies
         public void upgrade()
         {
             _level++;
+            gain_stone = 10 * _level;
         }
 
 

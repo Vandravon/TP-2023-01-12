@@ -81,7 +81,7 @@ namespace myGameDependencies
             }
             else
             {
-                Console.WriteLine("Vous n'avez pas assez de ressources pour augmenter de niveau!");
+                Console.WriteLine("Vous n'avez pas assez de ressources pour augmenter de niveau de Ressources!");
             }
         }
 

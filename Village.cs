@@ -131,6 +131,38 @@ namespace myGame
             }
         }
 
+        public void upgradeRessources()
+        {
+            _myRessources.upgrade();
+        }
+
+        public void upgradeMine()
+        {
+            if (getStone() >= 10 * Mine.gain_stone)
+            {
+                _myRessources.usedStone(10 * Mine.gain_stone);
+                _myMine.upgrade();
+            }
+            else
+            {
+                Console.WriteLine("Vous n'avez pas assez de Pierre pour améliorer votre Mine.");
+            }
+
+        }
+
+        public void upgradeForest()
+        {
+            if (getWood() >= 10 * Forest.gain_wood)
+            {
+                _myRessources.usedWood(10 * Forest.gain_wood);
+                _myForest.upgrade();
+            }
+            else
+            {
+                Console.WriteLine("Vous n'avez pas assez de Bois pour améliorer votre Forêt.");
+            }
+        }
+
 
 
 
@@ -146,10 +178,7 @@ namespace myGame
             }
         }
 
-        public void ressourcesLevelPlus()
-        {
-            _myRessources.upgrade();
-        }
+
 
     }
 }

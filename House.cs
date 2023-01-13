@@ -12,7 +12,6 @@ namespace myGameDependencies
             wood_needed = 3;
             stone_needed = 3;
             villageois = 10;
-            // Console.WriteLine("INSTANCIATION!");
         }
     }
 

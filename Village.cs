@@ -32,7 +32,7 @@ namespace myGame
             {
                 Console.WriteLine("---------------");
                 Console.WriteLine("");
-                Console.WriteLine($"{getName()} || Pierre {getStone()} | Bois {getWood()} | Villageois {villageois}");
+                Console.WriteLine($"{getName()} || Pierre {getStone()} | Bois {getWood()} | Villageois {villageois} | Or {getGold()}");
                 Console.WriteLine($"Ressources niveau {_myRessources.getLevel()} | Forêt niveau: {_myForest.getLevel()} | Mine niveau: {_myMine.getLevel()}");
                 Console.WriteLine("");
                 Console.WriteLine("Vos choix disponibles:");
@@ -170,6 +170,11 @@ namespace myGame
             return _myRessources.getStone();
         }
 
+        public int getGold()
+        {
+            return _myRessources.getGold();
+        }
+
         private void addHouse()
         {
             House[] newListHouse = new House[listHouse.Length + 1];
@@ -229,6 +234,28 @@ namespace myGame
                 Console.WriteLine("Il n'y a pas assez de villageois!");
             }
         }
+
+        // public void mineGold(int nombreVillageois)
+        // {
+        //     if (nombreVillageois > 0 && nombreVillageois <= this.villageois)
+        //     {
+        //         if (nombreVillageois * Mine.gold_ > getStone() || nombreVillageois * Mine.wood_cost > getWood())
+        //         {
+        //             Console.WriteLine("Pas assez de ressources");
+        //         }
+        //         else
+        //         {
+        //             _myRessources.usedStone(nombreVillageois * Mine.stone_cost);
+        //             _myRessources.usedWood(nombreVillageois * Mine.wood_cost);
+        //             _myRessources.addStone(_myMine.mineStone(nombreVillageois));
+        //             Console.WriteLine("Minage de pierre effectué!");
+        //         }
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("Il n'y a pas assez de villageois!");
+        //     }
+        // }
 
         public void buildHouse(int numberHouses)
         {

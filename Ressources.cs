@@ -5,17 +5,21 @@ namespace myGameDependencies
     {
         private int _woods;
         private int _stones;
+        private int _golds;
         private int _level;
         private int _woods_max;
         private int _stones_max;
+        private int _gold_max;
 
         public Ressources()
         {
             _woods = 10;
             _stones = 10;
+            _golds = 0;
             _level = 1;
             _woods_max = 250;
             _stones_max = 250;
+            _gold_max = 50;
         }
 
         public int getWood()
@@ -26,6 +30,11 @@ namespace myGameDependencies
         public int getStone()
         {
             return _stones;
+        }
+
+        public int getGold()
+        {
+            return _golds;
         }
 
         public void usedWood(int nbr)
@@ -52,6 +61,18 @@ namespace myGameDependencies
             }
         }
 
+        public void usedGold(int nbr)
+        {
+            if (nbr <= _golds)
+            {
+                _golds -= nbr;
+            }
+            else
+            {
+                Console.WriteLine("Pas assez d'or pour cette opération!");
+            }
+        }
+
         public void addStone(int nbr)
         {
             _stones += nbr;
@@ -70,6 +91,15 @@ namespace myGameDependencies
             }
         }
 
+        public void addGold(int nbr)
+        {
+            _golds += nbr;
+            if (_golds > _gold_max)
+            {
+                _golds = _gold_max;
+            }
+        }
+
         public int getLevel()
         {
             return _level;
@@ -77,12 +107,14 @@ namespace myGameDependencies
 
         public void upgrade()
         {
-            if (_stones >= (int)Math.Round(0.8 * _stones_max) && _woods >= (int)Math.Round(0.8 * _woods_max))
+            if (_stones >= (int)Math.Round(0.8 * _stones_max) && _woods >= (int)Math.Round(0.8 * _woods_max) && _golds >= (int)Math.Round(0.8 * _gold_max))
             {
                 _stones -= (int)Math.Round(0.8 * _stones_max);
                 _woods -= (int)Math.Round(0.8 * _woods_max);
+                _golds -= (int)Math.Round(0.8 * _gold_max);
                 _woods_max = _woods_max * 2;
                 _stones_max = _stones_max * 2;
+                _gold_max = _gold_max * 2;
                 _level++;
                 Console.WriteLine("Bravo, vous voilà au niveau " + _level + " !");
             }

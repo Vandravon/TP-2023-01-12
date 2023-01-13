@@ -72,8 +72,10 @@ namespace myGameDependencies
 
         public void upgrade()
         {
-            if (_stones >= 0.8 * _stones_max && _woods >= 0.8 * _woods_max)
+            if (_stones >= (int)Math.Round(0.8 * _stones_max) && _woods >= (int)Math.Round(0.8 * _woods_max))
             {
+                _stones -= (int)Math.Round(0.8 * _stones_max);
+                _woods -= (int)Math.Round(0.8 * _woods_max);
                 _woods_max = _woods_max * 2;
                 _stones_max = _stones_max * 2;
                 _level++;

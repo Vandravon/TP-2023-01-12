@@ -70,6 +70,11 @@ namespace myGameDependencies
             }
         }
 
+        public int getLevel()
+        {
+            return _level;
+        }
+
         public void upgrade()
         {
             if (_stones >= (int)Math.Round(0.8 * _stones_max) && _woods >= (int)Math.Round(0.8 * _woods_max))

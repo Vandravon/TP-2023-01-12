@@ -10,7 +10,7 @@ namespace myGameDependencies
 
         public Mine()
         {
-            Console.WriteLine("Mine created!");
+            // Console.WriteLine("Mine created!");
             _level = 1;
         }
 
@@ -19,9 +19,9 @@ namespace myGameDependencies
             return nombreVillageois * gain_stone + 10 * _level;
         }
 
-        public void getLevel()
+        public int getLevel()
         {
-            Console.WriteLine($"Votre Mine est niveau {_level}.");
+            return _level;
         }
 
         public void upgrade()

@@ -18,9 +18,9 @@ namespace myGameDependencies
             return nombreVillageois * gain_wood;
         }
 
-        public void getLevel()
+        public int getLevel()
         {
-            Console.WriteLine($"Votre Forêt est niveau {_level}.");
+            return _level;
         }
 
         public void upgrade()

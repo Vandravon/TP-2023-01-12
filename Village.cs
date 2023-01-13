@@ -17,6 +17,7 @@ namespace myGame
         public House[] listHouse;
         private Mine _myMine;
         private Forest _myForest;
+        private string? _gamePlayerChoice;
 
         public Village(string c_name)
         {
@@ -26,11 +27,113 @@ namespace myGame
             listHouse = new House[1] { chefHome };
             _myMine = new Mine();
             _myForest = new Forest();
+
+            while (_gamePlayerChoice != "0" && _gamePlayerChoice != "")
+            {
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine($"{getName()} || Pierre {getStone()} | Bois {getWood()} | Villageois {villageois}");
+                Console.WriteLine($"Ressources niveau {_myRessources.getLevel()} | Forêt niveau: {_myForest.getLevel()} | Mine niveau: {_myMine.getLevel()}");
+                Console.WriteLine("");
+                Console.WriteLine("Vos choix disponibles:");
+                Console.WriteLine("");
+                Console.WriteLine("1(nombre de villageois): Miner de la pierre | 2(nombre de villageois): Couper du bois | 3(nombre de maisons): Construire des maisons");
+                Console.WriteLine("4: Améliorer les ressources | 5: Améliorer la Mine | 6: Améliorer la Forêt");
+                Console.WriteLine("0: Arrêter le jeu | 9: Triche");
+                Console.WriteLine("");
+                Console.WriteLine("Que voulez-vous faire?");
+                _gamePlayerChoice = Console.ReadLine();
+                Console.WriteLine("");
+
+
+                string playerParam = "";
+
+                // Permet de vérifier si le paramètre respecte le format (collé au choix avec des chiffres à l'intérieur)
+                if ((_gamePlayerChoice[0] == '1' || _gamePlayerChoice[0] == '2' || _gamePlayerChoice[0] == '3') && _gamePlayerChoice.Length > 3)
+                {
+                    if (_gamePlayerChoice[1] != '(' || _gamePlayerChoice[_gamePlayerChoice.Length - 1] != ')')
+                    {
+                        Console.WriteLine("Merci de signifier votre choix suivi du paramètre entre ()");
+                    }
+                    else
+                    {
+                        for (int i = 2; i < _gamePlayerChoice.Length - 1; i++)
+                        {
+                            if (_gamePlayerChoice[i] < '0' || _gamePlayerChoice[i] > '9')
+                            {
+                                Console.WriteLine("Le paramètre ne doit contenir que des nombres");
+                            }
+                            else
+                            {
+                                playerParam += _gamePlayerChoice[i];
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Merci de signifier votre choix suivi du paramètre entre ()");
+
+                }
+
+                if (_gamePlayerChoice[0] == '1')
+                {
+                    if (playerParam != "")
+                    {
+                        int nombreVillageois = Convert.ToInt32(playerParam);
+                        mineStone(nombreVillageois);
+                    }
+                }
+
+                else if (_gamePlayerChoice[0] == '2')
+                {
+
+
+                    if (playerParam != "")
+                    {
+                        int nombreVillageois = Convert.ToInt32(playerParam);
+                        cutWood(nombreVillageois);
+                    }
+                }
+                else if (_gamePlayerChoice[0] == '3')
+                {
+                    if (playerParam != "")
+                    {
+                        int nombreMaisons = Convert.ToInt32(playerParam);
+                        buildHouse(nombreMaisons);
+                    }
+                }
+                else if (_gamePlayerChoice[0] == '4')
+                {
+                    upgradeRessources();
+                }
+                else if (_gamePlayerChoice[0] == '5')
+                {
+                    upgradeMine();
+                }
+                else if (_gamePlayerChoice[0] == '6')
+                {
+                    upgradeForest();
+                }
+                else if (_gamePlayerChoice[0] == '9')
+                {
+                    triche();
+                }
+                else if (_gamePlayerChoice[0] == '0')
+                {
+                    Console.WriteLine("Merci d'avoir joué à Village Creator!");
+                }
+                else
+                {
+                    Console.WriteLine("Vous avez mal renseigné les informations");
+                }
+
+            }
         }
 
-        public void getName()
+        public string getName()
         {
-            Console.WriteLine($"Nom du village: {_name}");
+            return _name;
         }
 
         public int getWood()
@@ -54,6 +157,9 @@ namespace myGame
             }
             newListHouse[newListHouse.Length - 1] = houseToAdd;
             listHouse = newListHouse;
+
+            _myRessources.usedWood(House.wood_needed);
+            _myRessources.usedStone(House.stone_needed);
         }
 
         public void mineStone(int nombreVillageois)
@@ -69,6 +175,7 @@ namespace myGame
                     _myRessources.usedStone(nombreVillageois * Mine.stone_cost);
                     _myRessources.usedWood(nombreVillageois * Mine.wood_cost);
                     _myRessources.addStone(_myMine.mineStone(nombreVillageois));
+                    Console.WriteLine("Minage de pierre effectué effectué!");
                 }
             }
             else
@@ -168,10 +275,10 @@ namespace myGame
 
         //// METHODES TESTS!!! ------ DELETE SOON
 
-        public void ressourcesPlus(int nb)
+        public void triche()
         {
 
-            for (int i = 0; i < nb; i++)
+            for (int i = 0; i < 500; i++)
             {
                 _myRessources.lookAround();
 

@@ -1,22 +1,22 @@
 namespace myGameDependencies
 {
 
-    public class Mine
+    public class Field
     {
-        public static int gain_stone = 10;
+        public static int gain_food = 10;
         public static int stone_cost = 2;
         public static int wood_cost = 1;
+        public static int food_cost = 1;
         private int _level;
 
-        public Mine()
+        public Field()
         {
-            // Console.WriteLine("Mine created!");
             _level = 1;
         }
 
-        public int mineStone(int nombreVillageois)
+        public int foodGather(int nombreVillageois)
         {
-            return nombreVillageois * gain_stone;
+            return nombreVillageois * gain_food;
         }
 
         public int getLevel()
@@ -27,7 +27,7 @@ namespace myGameDependencies
         public void upgrade()
         {
             _level++;
-            gain_stone = 10 * _level;
+            gain_food = 10 * _level;
         }
 
 
